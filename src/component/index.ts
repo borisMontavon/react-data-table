@@ -1,1 +1,1 @@
-export { default as Button } from "./DataTable/react-data-table";
+export { default as ReactDataTable } from "./DataTable/react-data-table";

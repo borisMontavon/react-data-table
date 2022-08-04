@@ -1,12 +1,12 @@
 import React from "react";
 import "./react-data-table.css";
 
-export interface ButtonProps {
+export interface ReactDataTableProps {
     label: string;
 }
   
-const Button = ({label}: ButtonProps) => {
+const ReactDataTable = ({label}: ReactDataTableProps) => {
     return <button>{label}</button>;
 };
   
-export default Button;
+export default ReactDataTable;
