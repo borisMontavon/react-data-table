@@ -1,6 +1,7 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
+import babel from '@rollup/plugin-babel';
 import dts from "rollup-plugin-dts";
 
 // NEW
@@ -35,9 +36,9 @@ export default [
   {
     input: "dist/esm/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
-    plugins: [dts()],
+    plugins: [dts(), babel({ babelHelpers: 'bundled' })],
 
     // NEW
-    external: [/\.css$/],
+    external: [/\.css$/, 'react', 'react-dom'],
   },
 ];
