@@ -15,17 +15,11 @@ interface ReactDataTableProps {
 
 // Custom datatable handling plugin with react
 export default function ReactDataTable({data}:ReactDataTableProps) {
-    // const [sortedData, setSortedData] = useState<Array<any>>([]);
-    // const [columns, setColumns] = useState<Array<any>>([]);
+    const [sortedData, setSortedData] = useState<Array<any>>([]);
+    const [columns, setColumns] = useState<Array<any>>([]);
     const [maxRows, setMaxRows] = useState(10);
     const [isSearched, setIsSearched] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-
-    let sortedData: any = [];
-    let columns: any = [];
-    // let maxRows = 10;
-    // let isSearched = false;
-    // let currentPage = 1;
 
     // Initializing the data and columns for the table 
     useEffect(() => {
@@ -37,7 +31,7 @@ export default function ReactDataTable({data}:ReactDataTableProps) {
             };
         });
 
-        sortedData = initData;
+        setSortedData(initData);
 
         // Creating the columns
         const initColumns = data.columns.map((column) => {
@@ -48,7 +42,7 @@ export default function ReactDataTable({data}:ReactDataTableProps) {
             };
         });
 
-        columns = initColumns;
+        setColumns(initColumns);
     }, [data]);
 
     // Sorting table data by value of column clicked
@@ -84,7 +78,7 @@ export default function ReactDataTable({data}:ReactDataTableProps) {
         // Sorting the data by result to the Comparer function call
         newlySortedData.sort(Comparer(column.key, column.sortBy === "asc"));
         
-        sortedData = newlySortedData;
+        setSortedData(newlySortedData);
         setCurrentPage(1);
     };
 
@@ -109,7 +103,7 @@ export default function ReactDataTable({data}:ReactDataTableProps) {
 
         const newlySortedData = [...sortedData];
 
-        sortedData = newlySortedData;
+        setSortedData(newlySortedData);
         setCurrentPage(1);
     };
 
